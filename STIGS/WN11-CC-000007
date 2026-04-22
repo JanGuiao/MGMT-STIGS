@@ -1,1 +1,29 @@
 
+# STIG WN11-CC-000007 - Deny Webcam Access
+
+Write-Host "Applying STIG: Disable Webcam Access (Deny)..." -ForegroundColor Cyan
+
+$path = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam"
+
+# Ensure registry path exists
+New-Item -Path $path -Force | Out-Null
+
+# Set value to Deny
+New-ItemProperty `
+    -Path $path `
+    -Name "Value" `
+    -PropertyType String `
+    -Value "Deny" `
+    -Force | Out-Null
+
+# Verification
+$value = Get-ItemProperty -Path $path -Name "Value" -ErrorAction SilentlyContinue
+
+Write-Host "`n--- Verification ---" -ForegroundColor Yellow
+$value.Value
+
+if ($value.Value -eq "Deny") {
+    Write-Host "`nPASS: Webcam access is set to Deny" -ForegroundColor Green
+} else {
+    Write-Host "`nFAIL: Webcam access is not correctly configured" -ForegroundColor Red
+}
