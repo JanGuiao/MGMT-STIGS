@@ -4,7 +4,7 @@
 
 .NOTES
     Author          : Jan Guiao
-    LinkedIn        : linkedin.com/in/JanGuiaor/
+    LinkedIn        : linkedin.com/in/JanGuiao/
     GitHub          : github.com/JanGuiao
     Date Created    : 2026-04-21
     Last Modified   : 2026-04-21
