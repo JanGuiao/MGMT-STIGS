@@ -1,6 +1,7 @@
 <#
 .SYNOPSIS
 This PowerShell script makes the system STIG-compliant by creating the required registry key (HKLM\SOFTWARE\Policies\Microsoft\Windows\Personalization) if it does not already exist, then creating or updating the NoLockScreenCamera DWORD value and setting it to 1. This enforces the policy that disables camera access on the lock screen, which is the required configuration for WN11-CC-000005.
+
 .NOTES
     Author          : Jan Guiao
     LinkedIn        : linkedin.com/in/JanGuiao/
