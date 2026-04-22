@@ -26,10 +26,9 @@
     PS C:\Users\j4n\Desktop> C:\Users\j4n\Desktop\WN11-AC-000020.ps1
 #>
 
-# YOUR CODE GOES HERE
+#YOUR CODE GOES HERE
 
 # STIG WN11-AC-000020 - Enforce Password History (>= 24)
-
 $requiredHistory = 24
 
 Write-Host "Setting Enforce Password History to $requiredHistory..." -ForegroundColor Cyan
