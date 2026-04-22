@@ -1,1 +1,26 @@
 
+# STIG WN11-AU-000589 - Audit Registry (Failure)
+
+Write-Host "Enabling Audit Registry (Failure)..." -ForegroundColor Cyan
+
+# Enable FAILURE auditing for Registry access
+auditpol /set /subcategory:"Registry" /success:disable /failure:enable | Out-Null
+
+# Force policy refresh
+gpupdate /force | Out-Null
+
+Start-Sleep -Seconds 2
+
+# Verification
+$audit = auditpol /get /subcategory:"Registry"
+
+Write-Host "`n--- Verification Output ---" -ForegroundColor Yellow
+$audit
+
+if ($audit -match "Registry.*Failure\s+Enabled") {
+    Write-Host "`nPASS: Audit Registry is correctly configured for Failure" -ForegroundColor Green
+} else {
+    Write-Host "`nFAIL: Audit Registry is NOT configured for Failure" -ForegroundColor Red
+}
+
+Write-Host "`nNOTE: GPEDIT may still show 'Not Configured' even when auditpol is correct." -ForegroundColor DarkYellow
