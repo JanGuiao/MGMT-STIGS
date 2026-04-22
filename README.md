@@ -7,6 +7,6 @@ The effort led to measurable enhancements in the system’s security posture, en
 
 # BLUF
 
-* # Vulnerability Assessment & Remediation Reporting
+* ## Vulnerability Assessment & Remediation Reporting
 
 * # 
