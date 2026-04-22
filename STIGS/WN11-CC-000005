@@ -1,1 +1,29 @@
 
+# STIG WN11-CC-000005 - Disable Lock Screen Camera
+
+Write-Host "Applying STIG: Disable Lock Screen Camera..." -ForegroundColor Cyan
+
+$path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization"
+
+# Create registry path if it doesn't exist
+New-Item -Path $path -Force | Out-Null
+
+# Set required value
+New-ItemProperty `
+    -Path $path `
+    -Name "NoLockScreenCamera" `
+    -PropertyType DWord `
+    -Value 1 `
+    -Force | Out-Null
+
+# Verification
+$value = Get-ItemProperty -Path $path -Name "NoLockScreenCamera" -ErrorAction SilentlyContinue
+
+Write-Host "`n--- Verification ---" -ForegroundColor Yellow
+$value.NoLockScreenCamera
+
+if ($value.NoLockScreenCamera -eq 1) {
+    Write-Host "`nPASS: NoLockScreenCamera is set to 1" -ForegroundColor Green
+} else {
+    Write-Host "`nFAIL: Registry value not correctly configured" -ForegroundColor Red
+}
