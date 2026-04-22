@@ -1,6 +1,7 @@
 <#
 .SYNOPSIS
 This PowerShell script ensures that Windows 11 enables Audit Registry success events, allowing the system to log successful registry access attempts. This supports STIG compliance by improving visibility into object access activity and strengthening system auditing and forensic traceability.
+
 .NOTES
     Author          : Jan Guiao
     LinkedIn        : linkedin.com/in/JanGuiao/
