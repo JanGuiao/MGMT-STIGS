@@ -1,6 +1,7 @@
 <#
 .SYNOPSIS
 This PowerShell script ensures that Windows 11 is configured to log failed registry access attempts by enabling Audit Registry (Failure) in the system’s Advanced Audit Policy. This supports STIG compliance by improving visibility into unauthorized or unsuccessful registry activity.
+
 .NOTES
     Author          : Jan Guiao
     LinkedIn        : linkedin.com/in/JanGuiao/
