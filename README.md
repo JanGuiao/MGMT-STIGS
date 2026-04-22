@@ -8,5 +8,10 @@ The effort led to measurable enhancements in the system’s security posture, en
 # BLUF
 
 * ### Vulnerability Assessment & Remediation Reporting
+  Performed targeted vulnerability assessments using Tenable across Windows and Linux systems, producing detailed reports to guide remediation efforts for the server team.
 
-* # 
+* ### STIG-Based Configuration & Compliance Validation
+Implemented secure configuration baselines and conducted compliance evaluations based on DISA STIG guidelines, ensuring adherence to DoD and federal security requirements.
+
+* ### Automated Security Remediation with PowerShell
+Created and deployed PowerShell scripts to automate the enforcement of DISA STIG controls, efficiently resolving critical vulnerabilities and system misconfigurations.
