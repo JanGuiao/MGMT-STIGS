@@ -1,1 +1,29 @@
 
+# STIG WN11-CC-000197 - Turn off Microsoft consumer experiences
+
+Write-Host "Applying STIG: Disable Microsoft Consumer Features..." -ForegroundColor Cyan
+
+$path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent"
+
+# Ensure registry path exists
+New-Item -Path $path -Force | Out-Null
+
+# Set required value
+New-ItemProperty `
+    -Path $path `
+    -Name "DisableWindowsConsumerFeatures" `
+    -PropertyType DWord `
+    -Value 1 `
+    -Force | Out-Null
+
+# Verification
+$value = Get-ItemProperty -Path $path -Name "DisableWindowsConsumerFeatures" -ErrorAction SilentlyContinue
+
+Write-Host "`n--- Verification ---" -ForegroundColor Yellow
+$value.DisableWindowsConsumerFeatures
+
+if ($value.DisableWindowsConsumerFeatures -eq 1) {
+    Write-Host "`nPASS: Consumer features are disabled" -ForegroundColor Green
+} else {
+    Write-Host "`nFAIL: Setting not correctly configured" -ForegroundColor Red
+}
