@@ -1,2 +1,2 @@
-# VulnerabilityMGMT-STIGS
+# MGMT-STIGS
 STIG Projects
