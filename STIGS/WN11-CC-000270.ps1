@@ -1,5 +1,6 @@
 <#
 .SYNOPSIS
+
 This PowerShell script ensures Windows 11 enforces the STIG requirement by creating or updating the registry value DisablePasswordSaving under HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services and setting it to 1, which disables the ability to save Remote Desktop credentials. This improves security by preventing stored RDP passwords while leaving all other existing registry values in that key unchanged..NOTES
     Author          : Jan Guiao
     LinkedIn        : linkedin.com/in/JanGuiao/
