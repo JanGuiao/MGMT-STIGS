@@ -1,1 +1,53 @@
+<#
+.SYNOPSIS
+    This PowerShell script ensures that Windows 11 enforces a password history of at least 24 passwords, preventing users from reusing recent passwords and strengthening overall account security in compliance with STIG requirements.
 
+.NOTES
+    Author          : Jan Guiao
+    LinkedIn        : linkedin.com/in/JanGuiao/
+    GitHub          : github.com/JanGuiao
+    Date Created    : 2026-04-21
+    Last Modified   : 2026-04-21
+    Version         : 1.0
+    CVEs            : N/A
+    Plugin IDs      : N/A
+    STIG-ID         : WN11-AC-000020
+    Documentation   : https://stigaview.com/products/win11/v2r7/WN11-AC-000020/
+
+.TESTED ON
+    Date(s) Tested  : 
+    Tested By       : 
+    Systems Tested  : 
+    PowerShell Ver. : 
+
+.USAGE
+    Put any usage instructions here.
+    Example syntax:
+    PS C:\Users\j4n\Desktop> C:\Users\j4n\Desktop\WN11-AC-000020.ps1
+#>
+
+# YOUR CODE GOES HERE
+
+# STIG WN11-AC-000020 - Enforce Password History (>= 24)
+
+$requiredHistory = 24
+
+Write-Host "Setting Enforce Password History to $requiredHistory..." -ForegroundColor Cyan
+
+# Apply setting
+net accounts /uniquepw:$requiredHistory | Out-Null
+
+# Verify setting
+$policy = net accounts | Select-String "Length of password history maintained"
+
+if ($policy -match "\d+") {
+    $current = [int]($matches[0])
+
+    if ($current -ge $requiredHistory) {
+        Write-Host "PASS: Password history is set to $current" -ForegroundColor Green
+    } else {
+        Write-Host "FAIL: Password history is $current (expected $requiredHistory)" -ForegroundColor Red
+    }
+} else {
+    Write-Host "Unable to verify password history setting." -ForegroundColor Yellow
+}
